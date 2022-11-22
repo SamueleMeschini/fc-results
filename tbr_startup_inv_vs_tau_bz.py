@@ -38,4 +38,5 @@ axs[1].set_ylim(bottom=0)
 
 
 plt.tight_layout()
+plt.savefig("tbr_startup_inv_vs_tau_bz.pdf")
 plt.show()
