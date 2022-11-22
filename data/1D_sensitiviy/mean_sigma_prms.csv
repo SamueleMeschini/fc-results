@@ -1,0 +1,9 @@
+parameter,mean,sigma
+AF,0.75,0.25
+eta_f*fb,2.50E-02,2.50E-02
+f_dir,0.5,0.5
+tau_bl,13,11
+eta_TES,0.7,0.3
+t_p,6.5,5.5
+t_res,24,24
+t_d,6,5
