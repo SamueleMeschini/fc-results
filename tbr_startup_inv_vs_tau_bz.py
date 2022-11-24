@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotx
 
+plt.rcParams['font.size'] = '12'
 
 eta_f_f_b_values = [0.5, 1, 2, 5]  # %
 
@@ -13,22 +14,27 @@ for eta_f_fb in eta_f_f_b_values:
     )
     plt.sca(axs[0])  # sca stands for Set Current Axis (activates the top axis)
     plt.plot(
-        data["t_blanket_h"], data["TBR"], label="$\eta_f \ f_b =$" + f"{eta_f_fb:.1f}%"
+        data["t_blanket_h"], 
+        data["TBR"], 
+        label="TBE = " + f"{eta_f_fb:.1f}%",
+        marker='.'
     )
     plt.sca(axs[1])
     plt.plot(
         data["t_blanket_h"],
         data["I_startup_kg"],
-        label="$\eta_f \ f_b =$" + f"{eta_f_fb:.1f}%",
+        label="TBE" + f"{eta_f_fb:.1f}%",
+        marker='.'
     )
 
-axs[1].set_xlabel(r"Blanket residency time $\tau_\mathrm{BZ}$ (h)")
+axs[1].set_xlabel(r"Blanket residence time $\tau_\mathrm{BZ}$ (h)")
 axs[1].set_xscale("log")
 
 for ax in axs:
-    matplotx.line_labels(ax)
+    matplotx.line_labels(ax,fontsize=10)
     ax.spines.right.set_visible(False)
     ax.spines.top.set_visible(False)
+    ax.grid(which='major', axis='y', alpha=0.1)
 
 matplotx.ylabel_top("Required TBR", ax=axs[0])
 matplotx.ylabel_top("Startup \n inventory (kg)", ax=axs[1])
