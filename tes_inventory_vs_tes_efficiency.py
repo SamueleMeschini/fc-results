@@ -18,7 +18,7 @@ for eta_f_f_b in eta_f_f_b_values:
     plt.plot(data["eta_TES"], data["I_tes_g"], label=f"{eta_f_f_b:.1f}%")
 
 # add labels
-plt.text(x=0.98, y=123, s="$n_f \ f_b =$")
+plt.text(x=0.98, y=123, s="$\mathrm{TBE} =$")
 plt.xlabel("$\eta_\mathrm{TES}$")
 matplotx.ylabel_top("TES inventory (g)")
 
