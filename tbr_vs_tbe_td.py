@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import matplotx
 
 plt.figure(figsize=(6.4, 3))
+plt.rcParams["font.size"] = "14"
+
 
 for doubling_time in [1, 2, 5]:
     data = np.genfromtxt(
@@ -11,12 +13,12 @@ for doubling_time in [1, 2, 5]:
 
     TBE = data["eta_f"] * data["f_b"] * 100
 
-    plt.plot(TBE[::-1], data["TBR"][::-1], label=f"$t_d = {doubling_time}$ y")
+    plt.plot(TBE[::-1], data["TBR"][::-1], label=f"$t_d = {doubling_time}$ y", marker='.')
 
 # to get labels closer
-plt.xlim(right=5)
+plt.xlim(right=5.2)
 
-plt.ylim(1, 1.5)
+plt.ylim(1, 1.8)
 
 matplotx.line_labels()
 

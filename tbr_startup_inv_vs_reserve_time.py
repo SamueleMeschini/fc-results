@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotx
 
+plt.rcParams["font.size"] = "14"
 
 eta_f_f_b_values = [0.5, 1, 2, 5]  # %
 
@@ -15,17 +16,23 @@ for eta_f_f_b in eta_f_f_b_values:
     )
     plt.sca(axs[0])
     # fetch csv data with numpy
-    plt.plot(data["t_res"], data["TBR"], label=f"TBE = {eta_f_f_b:.1f}%")
+    plt.plot(data["t_res"], data["TBR"], label=f"TBE = {eta_f_f_b:.1f}%", marker='.')
     plt.sca(axs[1])
-    plt.plot(data["t_res"], data["I_startup_kg"], label=f"TBE = {eta_f_f_b:.1f}%")
+    plt.plot(data["t_res"], data["I_startup_kg"], label=f"TBE = {eta_f_f_b:.1f}%", marker='.')
 
 plt.xlabel("Reserve time $t_\mathrm{res}$ (h)")
 
 # Linear yscale should always start at zero
 axs[0].set_ylim(bottom=1)
+axs[0].set_xticks([0,24,48])
+axs[0].set_yticks(np.arange(1., 1.5, 0.1))
+
 axs[1].set_ylim(bottom=0)
-axs[0].set_ylabel("Required TBR")
-axs[1].set_ylabel("Startup inventory (kg)")
+axs[1].set_yticks(np.arange(0, 12, 2))
+
+
+matplotx.ylabel_top("Required TBR", ax=axs[0])
+matplotx.ylabel_top("Startup \n inventory (kg)", ax=axs[1])
 
 
 # remove top and right axis, cause we don't need that junk
@@ -35,6 +42,8 @@ for ax in axs:
     ax.set_xlim(left=0)
     # Use inline labelling
     matplotx.line_labels(ax)
+    ax.grid(which="major", axis="y", alpha=0.1)
+
 plt.tight_layout()
 
 # save and show

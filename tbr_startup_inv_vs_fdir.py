@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotx
 
-plt.rcParams["font.size"] = "12"
+plt.rcParams["font.size"] = "14"
 
 eta_f_f_b_values = [0.5, 1, 2, 5]  # %
 
@@ -28,8 +28,7 @@ for eta_f_fb in eta_f_f_b_values:
         marker=".",
     )
 
-axs[1].set_xlabel(r"DIR fraction f_{DIR}")
-axs[1].set_xscale("log")
+axs[1].set_xlabel(r"DIR fraction $f_{DIR}$")
 
 for ax in axs:
     matplotx.line_labels(ax, fontsize=10)
@@ -43,7 +42,10 @@ matplotx.ylabel_top("Required TBR", ax=axs[0])
 matplotx.ylabel_top("Startup \n inventory (kg)", ax=axs[1])
 
 axs[0].set_ylim(bottom=1)
+axs[0].set_yticks(np.arange(1., 1.4, 0.1))
 axs[1].set_ylim(bottom=0)
+axs[1].set_yticks(np.arange(0, 8, 2))
+plt.xticks(np.arange(0.1, 1., 0.2))
 
 
 plt.tight_layout()

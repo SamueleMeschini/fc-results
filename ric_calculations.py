@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotx
 
+plt.rcParams["font.size"] = "14"
+
 
 def sensitivity_index_coeff(x, y):
     # make sure x is sorted
@@ -19,8 +21,8 @@ def sensitivity_index_coeff(x, y):
 # TODO fix issue #1 related to eta_f f_b data
 
 params = ["AF", "eta_f_f_b", "f_dir", "tau_bl", "eta_TES", "t_p", "t_res", "t_d"]
-means = [0.75, 2.50e-2, 0.5, 13, 0.7, 6.5, 24, 6]
-sigmas = [0.25, 2.5e-2, 0.5, 11, 0.3, 5.5, 24, 5]
+means = [0.75, 2.50e-2, 0.5, 12.5, 0.7, 6.5, 24, 6]
+sigmas = [0.25, 2.5e-2, 0.5, 11.5, 0.3, 5.5, 24, 5]
 symbols = [
     "AF",
     "$\mathrm{TBE}$",
@@ -50,7 +52,7 @@ for i, param in enumerate(params):
     norm_x = (x - means[i]) / sigmas[i]
     ref_y = y[np.where(np.isclose(norm_x, 0))]
     norm_y = (y) / ref_y
-    (l,) = plt.plot(norm_x, norm_y, label=symbols[i])
+    (l,) = plt.plot(norm_x, norm_y, label=symbols[i], marker='.')
     colours.append(l.get_color())
 
 plt.xticks(ticks=[-1, 0, 1], labels=["$\mu - \sigma$", "$\mu$", "$\mu + \sigma$"])
@@ -69,6 +71,7 @@ for param, ric in zip(params, relative_sensitivity_indexes):
 
 # plotting
 plt.sca(axs[1])
+
 # sort bars
 sorted_params = [x for _, x in sorted(zip(relative_sensitivity_indexes, symbols))]
 sorted_colours = [x for _, x in sorted(zip(relative_sensitivity_indexes, colours))]
@@ -78,7 +81,6 @@ plt.xlabel("RIC")
 
 plt.grid(True, which="major", axis="x")
 plt.gca().set_axisbelow(True)
-
 plt.gca().spines.right.set_visible(False)
 plt.gca().spines.top.set_visible(False)
 plt.gca().spines.bottom.set_visible(False)
@@ -107,7 +109,7 @@ for i, param in enumerate(params):
     norm_x = (x - means[i]) / sigmas[i]
     ref_y = y[np.where(np.isclose(norm_x, 0))]
     norm_y = (y) / ref_y
-    (l,) = plt.plot(norm_x, norm_y, label=symbols[i])
+    (l,) = plt.plot(norm_x, norm_y, label=symbols[i], marker='.')
     colours.append(l.get_color())
 
 plt.xticks(ticks=[-1, 0, 1], labels=["$\mu - \sigma$", "$\mu$", "$\mu + \sigma$"])

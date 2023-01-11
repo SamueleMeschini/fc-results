@@ -4,6 +4,7 @@ import matplotx
 import matplotlib.cm as cm
 from matplotlib.colors import Normalize, LogNorm
 
+plt.rcParams["font.size"] = "14"
 
 def eta_f_f_b_to_colour(eta_f_f_b):
     """Returns a colour as a blue gradient"""
@@ -24,10 +25,11 @@ for eta_f_fb in eta_f_f_b_values:
         tau_blanket,
         blanket_inv,
         label="TBE = " + f"{eta_f_fb:.1f}%",
-        color=eta_f_f_b_to_colour(eta_f_fb),
+        # color=eta_f_f_b_to_colour(eta_f_fb),
+        marker = '.'
     )
 plt.ylim(bottom=0)
-plt.xlim(left=0, right=240)
+plt.xlim(left=0, right=245)
 
 plt.ylabel("Blanket inventory (g)")
 plt.xlabel(r"Blanket residence time $\tau_\mathrm{BZ}$ (h)")

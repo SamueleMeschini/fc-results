@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotx
 
+plt.rcParams["font.size"] = "14"
 
 eta_f_f_b_values = [0.5, 1, 2, 5]  # %
 
@@ -15,12 +16,13 @@ for eta_f_f_b in eta_f_f_b_values:
     data = np.genfromtxt(
         f"data/TES_eff/eta_f x f_b = {eta_f_f_b:.1f}%.csv", delimiter=",", names=True
     )
-    plt.plot(data["eta_TES"], data["I_tes_g"], label=f"{eta_f_f_b:.1f}%")
+    plt.plot(data["eta_TES"], data["I_tes_g"], label=f"{eta_f_f_b:.1f}%", marker='.')
 
 # add labels
-plt.text(x=0.98, y=123, s="$\mathrm{TBE} =$")
+plt.text(x=0.98, y=130, s="$\mathrm{TBE} =$")
 plt.xlabel("$\eta_\mathrm{TES}$")
-matplotx.ylabel_top("TES inventory (g)")
+plt.xticks(np.arange(0.4, 1.1, 0.1))
+plt.ylabel("TES inventory (g)")
 
 # Linear yscale should always start at zero
 plt.ylim(bottom=0)

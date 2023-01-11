@@ -3,6 +3,8 @@ from matplotlib.ticker import PercentFormatter
 import matplotlib.cm as cm
 from matplotlib.colors import Normalize
 import numpy as np
+from labellines import labelLines
+import matplotx
 
 
 t_p_values = [1, 4, 12]  # h
@@ -29,32 +31,35 @@ for row_index, metric in enumerate(["TBR", "I_startup_kg"]):
         for tp in t_p_values:
             filename = folder + f"/IFC processing time = {tp}h.csv"
             data = np.genfromtxt(filename, delimiter=",", names=True)
-            eta_f_f_b = data["eta_f"] * data["f_b"]  # no need to multiply by 100 here
+            eta_f_f_b = data["eta_f"] * data["f_b"] * 100 # no need to multiply by 100 here
 
             plt.plot(
                 eta_f_f_b,
                 data[metric],
                 label=f"$t_p$ = {tp} h",
-                color=t_p_to_colour(tp),
+                # color=t_p_to_colour(tp),
+                marker='.'
             )
             # inline label
-            plt.annotate(
-                f"$t_p$ = {tp} h  ",
-                (eta_f_f_b[-1], data[metric][-1]),
-                ha="right",
-                va="center",
-                color=t_p_to_colour(tp),
-            )
+            # plt.annotate(
+            #     f"$t_p$ = {tp} h  ",
+            #     (eta_f_f_b[-1], data[metric][-1]),
+            #     ha="left",
+            #     va="center",
+            #     color=t_p_to_colour(tp),
+            # )
+
+        # labelLines(plt.gca().get_lines(), zorder=2.5, fontsize=6)
 
 # format axes
 for ax in axs[1]:
-    ax.set_xscale("log")
-    ax.set_xlabel("$\eta_f \ f_b$")
-    ax.get_xaxis().set_major_formatter(PercentFormatter(1.0))
+    # ax.set_xscale("log")
+    ax.set_xlabel("TBE (%)")
+    # ax.get_xaxis().set_major_formatter(PercentFormatter(1.0))
     # see https://stackoverflow.com/questions/31357611/format-y-axis-as-percent
 
-axs[0][0].set_ylim(bottom=1)
-axs[1][0].set_ylim(bottom=0)
+axs[0][0].set_ylim(bottom=1, top=1.5)
+axs[1][0].set_ylim(bottom=0, top=20)
 axs[0][0].set_xlim(left=0.02 / 100)
 
 axs[0][0].set_ylabel("Required TBR")
@@ -65,19 +70,25 @@ for i, t_d in enumerate(doubling_time_values):
     axs[0][i].set_title(f"$t_d = $ {t_d} y")
 
 
+
 # to have a legend for all of them, uncomment the following:
-# handles, labels = axs[1][1].get_legend_handles_labels()
-# fig.legend(
-#     handles[::-1], labels[::-1], loc="center right"
-# )  # [::-1] to have them in reverse order
+handles, labels = axs[1][1].get_legend_handles_labels()
+fig.legend(
+    handles[::-1], labels[::-1],
+    fontsize=10, 
+    bbox_to_anchor=(1, 0.93)
+)  # [::-1] to have them in reverse order
 
 # remove top and right axis
 for row in axs:
     for ax in row:
         ax.spines.right.set_visible(False)
-        ax.spines.top.set_visible(False)
+        ax.spines.top.set_visible(False)            
+        # matplotx.line_labels(ax, fontsize=10)
+        ax.grid(which="major", axis="y", alpha=0.1)
+
 
 plt.tight_layout()
 
-plt.savefig("tbr_startup_inv_vs_eta_f_f_b.pdf")
+plt.savefig("tbr_startup_inv_vs_TBE.pdf")
 plt.show()
