@@ -1,0 +1,8 @@
+Fixed parameters,Value,Units
+t_p,4,h
+t_d,2,y
+q,0.25,
+t_res,24,h
+f_dir ,0.3,
+AF_long_pulse,0.94,
+AF_short_pulse,0.98,

@@ -2,32 +2,41 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotx
 
-plt.figure(figsize=(6.4, 3))
 plt.rcParams["font.size"] = "14"
 
+fig, axs = plt.subplots(nrows=2, ncols=1, sharex=True, figsize=(6.4, 6))
 
-for doubling_time in [1, 2, 5]:
+for td in [1, 2, 5]:
     data = np.genfromtxt(
-        f"data/t_d/doubling_time = {doubling_time}y.csv", delimiter=",", names=True
+        f"data/td/t_d ={td}y.csv", delimiter=",", names=True
     )
 
-    TBE = data["eta_f"] * data["f_b"] * 100
+    TBE = data["TBE"]*100
 
-    plt.plot(TBE[::-1], data["TBR"][::-1], label=f"$t_d = {doubling_time}$ y", marker='.')
+    plt.sca(axs[0])
+    plt.plot(TBE, data["TBR_req"], label=f"$t_d = {td}$ y", marker='.')
+    plt.sca(axs[1])
+    plt.plot(TBE, data["TBR_req"], label=f"$t_d = {td}$ y", marker='.')
 
-# to get labels closer
-plt.xlim(right=5.2)
-
-plt.ylim(1, 1.8)
-
-matplotx.line_labels()
 
 plt.xlabel("TBE (%)")
-plt.ylabel("Required TBR")
+
+# set limits
+# plt.xlim(right=10.2)
+axs[1].set_ylim(1,1.3)
+
+matplotx.ylabel_top("Required TBR", ax=axs[0])
+matplotx.ylabel_top("Required TBR", ax=axs[1])
+
 
 # remove top and right axis, cause we don't need that junk
-plt.gca().spines.right.set_visible(False)
-plt.gca().spines.top.set_visible(False)
+for ax in axs:
+    ax.spines.right.set_visible(False)
+    ax.spines.top.set_visible(False)
+    # Use inline labelling
+    matplotx.line_labels(ax)
+    ax.grid(which="major", axis="y", alpha=0.1)
+
 plt.tight_layout()
 
 plt.savefig("tbr_vs_tbe_td.pdf")

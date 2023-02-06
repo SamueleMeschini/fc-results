@@ -4,27 +4,27 @@ import matplotx
 
 plt.rcParams["font.size"] = "14"
 
-eta_f_f_b_values = [0.5, 1, 2, 5]  # %
+TBE_values = [0.5, 1, 2, 5]  # %
 
 fig, axs = plt.subplots(nrows=2, ncols=1, sharex=True)
 
-for eta_f_fb in eta_f_f_b_values:
+for TBE in TBE_values:
     data = np.genfromtxt(
-        f"data/f_dir/eta_f x f_b = {eta_f_fb:.1f}%.csv", delimiter=",", names=True
+        f"data/f_dir/TBE={TBE:.1f}%.csv", delimiter=",", names=True
     )
     
     plt.sca(axs[0])  # sca stands for Set Current Axis (activates the top axis)
     plt.plot(
         data["f_dir"],
-        data["TBR"],
-        label="TBE = " + f"{eta_f_fb:.1f}%",
+        data["TBR_req"],
+        label="TBE = " + f"{TBE:.1f}%",
         marker=".",
     )
     plt.sca(axs[1])
     plt.plot(
         data["f_dir"],
         data["I_startup_kg"],
-        label="TBE = " + f"{eta_f_fb:.1f}%",
+        label="TBE = " + f"{TBE:.1f}%",
         marker=".",
     )
 

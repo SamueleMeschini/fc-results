@@ -6,25 +6,25 @@ from matplotlib.colors import Normalize, LogNorm
 
 plt.rcParams["font.size"] = "14"
 
-def eta_f_f_b_to_colour(eta_f_f_b):
-    """Returns a colour as a blue gradient"""
-    norm = LogNorm(vmin=0.01, vmax=max(eta_f_f_b_values))
-    return cm.Blues(norm(eta_f_f_b))
+# def eta_f_f_b_to_colour(eta_f_f_b):
+#     """Returns a colour as a blue gradient"""
+#     norm = LogNorm(vmin=0.01, vmax=max(eta_f_f_b_values))
+#     return cm.Blues(norm(eta_f_f_b))
 
 
-eta_f_f_b_values = [0.5, 1, 2, 5]  # %
+TBE_values = [0.5, 1, 2, 5]  # %
 
 plt.figure(figsize=(6.4, 3.8))
-for eta_f_fb in eta_f_f_b_values:
+for TBE in TBE_values:
     data = np.genfromtxt(
-        f"data/t_blanket/eta_f x f_b = {eta_f_fb:.1f}%.csv", delimiter=",", names=True
+        f"data/t_blanket/TBE={TBE:.1f}%.csv", delimiter=",", names=True
     )
     tau_blanket = data["t_blanket_h"]
-    blanket_inv = data["I_blanket_g"]
+    blanket_inv = data["Blanket_inventory_g"]
     plt.plot(
         tau_blanket,
         blanket_inv,
-        label="TBE = " + f"{eta_f_fb:.1f}%",
+        label="TBE = " + f"{TBE:.1f}%",
         # color=eta_f_f_b_to_colour(eta_f_fb),
         marker = '.'
     )

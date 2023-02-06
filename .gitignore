@@ -80,6 +80,7 @@ target/
 # IPython
 profile_default/
 ipython_config.py
+test.ipynb
 
 # pyenv
 .python-version
@@ -127,3 +128,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+data/inventory_evolution_tbz240h.csv

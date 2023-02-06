@@ -4,21 +4,21 @@ import matplotx
 
 plt.rcParams["font.size"] = "14"
 
-eta_f_f_b_values = [0.5, 1, 2, 5]  # %
+TBE_values = [0.5, 1, 2, 5]  # %
 
 # create a new figure
-fig, axs = plt.subplots(nrows=2, ncols=1, sharex=True, figsize=(6.4, 6))
+fig, axs = plt.subplots(nrows=2, ncols=1, sharex=True)
 
 # iterate through etaf fb values
-for eta_f_f_b in eta_f_f_b_values:
+for TBE in TBE_values:
     data = np.genfromtxt(
-        f"data/t_res/eta_f x f_b = {eta_f_f_b:.1f}%.csv", delimiter=",", names=True
+        f"data/t_res/TBE={TBE:.1f}%.csv", delimiter=",", names=True
     )
     plt.sca(axs[0])
     # fetch csv data with numpy
-    plt.plot(data["t_res"], data["TBR"], label=f"TBE = {eta_f_f_b:.1f}%", marker='.')
+    plt.plot(data["t_res"], data["TBR_req"], label=f"TBE = {TBE:.1f}%", marker='.')
     plt.sca(axs[1])
-    plt.plot(data["t_res"], data["I_startup_kg"], label=f"TBE = {eta_f_f_b:.1f}%", marker='.')
+    plt.plot(data["t_res"], data["I_startup_kg"], label=f"TBE = {TBE:.1f}%", marker='.')
 
 plt.xlabel("Reserve time $t_\mathrm{res}$ (h)")
 
