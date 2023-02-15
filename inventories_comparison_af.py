@@ -37,15 +37,15 @@ ax.set_xlabel('Time (days)')
 ax.set_ylabel('Inventory (kg)')
 ax.grid(True, which='both', alpha=0.1)
 handles, labels = ax.get_legend_handles_labels()
-ax.legend(handles=handles, labels=labels, loc='upper left', ncol=2, fontsize=10)
+ax.legend(handles=handles, labels=labels, loc='upper left', ncol=2, fontsize=11)
 ax.annotate('$t_d = 1y$', xy=(t_d_2, 2*y2[0,2]),  xycoords='data',
-    xytext=(250, 40), textcoords='data', fontsize=10,
+    xytext=(250, 40), textcoords='data', fontsize=12,
     arrowprops=dict(arrowstyle="->",
                     connectionstyle="arc3"),
     horizontalalignment='right', verticalalignment='top',
     )   
 ax.annotate('$t_d = 2y$', xy=(t_d_1, 2*y1[0,2]),  xycoords='data',
-    xytext=(3000, 40), textcoords='data', fontsize=10,
+    xytext=(3000, 40), textcoords='data', fontsize=12,
     arrowprops=dict(arrowstyle="->",
                     connectionstyle="arc3"),
     horizontalalignment='right', verticalalignment='top',
@@ -55,4 +55,5 @@ ax.annotate('$t_d = 2y$', xy=(t_d_1, 2*y1[0,2]),  xycoords='data',
 
 ax.spines.right.set_visible(False)
 ax.spines.top.set_visible(False)
+plt.tight_layout()
 fig.savefig("inventories_af_comparison.pdf", dpi=300)

@@ -24,4 +24,5 @@ for t_bz in t_bz_values:
     ax.text(x=0.7*365, y=50, s='$t_d = 2y$')
     ax.spines.right.set_visible(False)
     ax.spines.top.set_visible(False)
+    plt.show()
     fig.savefig(f'inventories_vs_t_tbz{t_bz}d.pdf', dpi=300)

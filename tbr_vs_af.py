@@ -27,8 +27,8 @@ axs.spines['top'].set_visible(False)
 axs.set_ylabel("Required TBR")
 axs.grid(which="major", axis="y", alpha=0.1)
 axs.set_ylim(1,1.4)
-plt.text(77,1.35,'$t_{pulse}$ = 1800s \n $t_{off}$ = 120s', bbox=dict(facecolor='white', edgecolor='k'), fontsize=10)
-plt.text(99,1.3,'$t_{pulse}$ = 3600 \n $t_{off}$ = 60s', bbox=dict(facecolor='white', edgecolor='k'), fontsize=10)
+plt.text(77,1.35,'$t_{pulse}$ = 1800s \n $t_{off}$ = 120s', bbox=dict(facecolor='white', edgecolor='k'), fontsize=12)
+plt.text(99,1.3,'$t_{pulse}$ = 3600 \n $t_{off}$ = 60s', bbox=dict(facecolor='white', edgecolor='k'), fontsize=12)
 
 # matplotx.ylabel_top("Required TBR", ax=axs)
 
