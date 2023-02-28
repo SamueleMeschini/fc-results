@@ -6,43 +6,45 @@ plt.rcParams["font.size"] = "14"
 
 TBE_values = [0.5, 1, 2, 5]  # %
 
-fig, (ax1,ax2) = plt.subplots(nrows=2, ncols=1,sharex=True, figsize=(6.4, 6))
+fig, axs = plt.subplots(nrows=2, ncols=1,sharex=True, figsize=(6.4, 6))
 
 for TBE in TBE_values:
     data = np.genfromtxt(
         f"data/epsi/TBE={TBE:.1f}%.csv", delimiter=",", names=True
     )
-    ax1.plot(
+    plt.sca(axs[0])
+    plt.plot(
         data["epsi"],
         data["TBR_req"],
         label="TBE = " + f"{TBE:.1f}%",
         marker=".",
     )
-    ax2.plot(
+    plt.sca(axs[1])
+    plt.plot(
         data["epsi"],
         data["TBR_req"],
         label="TBE = " + f"{TBE:.1f}%",
         marker=".",)
     
-matplotx.ylabel_top("Required \n TBR", ax=ax1,)
-matplotx.ylabel_top("Required \n {:<11}  ".format(' TBR'), ax=ax2)
+
+matplotx.ylabel_top("Required TBR", ax=axs[0])
+matplotx.ylabel_top("Required \n {:<11}".format('TBR'), ax=axs[1])
 
 
-ax2.spines['top'].set_visible(False)
-ax2.spines['right'].set_visible(False)
+for ax in axs:
+    ax.spines.right.set_visible(False)
+    ax.spines.top.set_visible(False)
+    # Use inline labelling
+    # matplotx.line_labels(ax)
+    ax.grid(which="major", axis="y", alpha=0.1)
+    ax.set_xscale('log')
+    ax.legend(fontsize=12)
 
-ax1.spines['top'].set_visible(False)
-ax1.spines['right'].set_visible(False)
 
-ax2.set_ylim(1,1.4)
-# ax2.set_ylabel("Required TBR")
-ax2.grid(which="major", axis="y", alpha=0.1)
-ax1.grid(which="major", axis="y", alpha=0.1)
-ax1.set_xscale('log')
-ax2.set_xscale('log')
+axs[1].set_ylim(1,1.4)
+# axs[1].set_ylabel("Required TBR")
 
-ax1.legend()
-ax2.set_xlabel("Non-radioactive loss fraction $\epsilon$")
+axs[1].set_xlabel("Non-radioactive loss fraction $\epsilon$")
 
 
 plt.tight_layout()
