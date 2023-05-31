@@ -27,7 +27,7 @@ symbols = [
     "AF",
     "$\mathrm{TBE}$",
     r"$f_\mathrm{dir}$",
-    r"$\tau_\mathrm{bl}$",
+    r"$\tau_\mathrm{BZ}$",
     r"$\eta_\mathrm{TES}$",
     "$t_p$",
     r"$t_\mathrm{res}$",

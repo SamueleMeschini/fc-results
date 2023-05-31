@@ -49,5 +49,5 @@ plt.xticks(np.arange(0.1, 1., 0.2))
 
 
 plt.tight_layout()
-plt.savefig("tbr_startup_inv_vs_fdir.pdf")
+plt.savefig("tbr_startup_inv_vs_fdir.png", dpi=300)
 plt.show()

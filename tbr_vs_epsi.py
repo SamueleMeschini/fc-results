@@ -27,8 +27,10 @@ for TBE in TBE_values:
         marker=".",)
     
 
-matplotx.ylabel_top("Required TBR", ax=axs[0])
-matplotx.ylabel_top("Required \n {:<11}".format('TBR'), ax=axs[1])
+# matplotx.ylabel_top("Required TBR", ax=axs[0])
+matplotx.ylabel_top("Required \n {:<11.7}".format('TBR'), ax=axs[0])
+
+matplotx.ylabel_top("Required \n {:<11.7}".format('TBR'), ax=axs[1])
 
 
 for ax in axs:
@@ -38,17 +40,16 @@ for ax in axs:
     # matplotx.line_labels(ax)
     ax.grid(which="major", axis="y", alpha=0.1)
     ax.set_xscale('log')
-    ax.legend(fontsize=12)
+    ax.legend(fontsize=10)
 
 
 axs[1].set_ylim(1,1.4)
 # axs[1].set_ylabel("Required TBR")
-
 axs[1].set_xlabel("Non-radioactive loss fraction $\epsilon$")
 
 
 plt.tight_layout()
-plt.savefig("tbr_vs_epsi.pdf")
+plt.savefig("tbr_vs_epsi.png", dpi=300)
 plt.show()
 
 # fig, (ax1,ax2) = plt.subplots(2,1,sharex=True)
