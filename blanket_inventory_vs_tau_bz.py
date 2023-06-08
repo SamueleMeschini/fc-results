@@ -37,6 +37,6 @@ matplotx.line_labels()
 plt.gca().spines.right.set_visible(False)
 plt.gca().spines.top.set_visible(False)
 plt.tight_layout()
-plt.savefig("blanket_inv_vs_tau_bz.pdf")
+plt.savefig("blanket_inv_vs_tau_bz.eps", format='eps')
 plt.show()
 #

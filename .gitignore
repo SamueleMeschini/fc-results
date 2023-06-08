@@ -134,3 +134,6 @@ data/inflection_w_o_reserve.csv
 data/inflection_w_reserve.csv
 data/inflection_point.csv
 data/basic_fc_flow.csv
+
+# ignore eps
+.eps

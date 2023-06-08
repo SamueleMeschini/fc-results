@@ -39,6 +39,6 @@ for ax in axs:
 
 plt.tight_layout()
 
-plt.savefig("tbr_vs_tbe_td.pdf")
+plt.savefig("tbr_vs_tbe_td.eps", format='eps')
 
 plt.show()

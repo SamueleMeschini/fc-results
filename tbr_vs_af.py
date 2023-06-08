@@ -33,5 +33,5 @@ plt.text(99,1.3,'$t_{pulse}$ = 3600 \n $t_{off}$ = 60s', bbox=dict(facecolor='wh
 # matplotx.ylabel_top("Required TBR", ax=axs)
 
 plt.tight_layout()
-plt.savefig("tbr_vs_af.png", dpi=300)
+plt.savefig("tbr_vs_af.eps", format='eps', dpi=300)
 plt.show()

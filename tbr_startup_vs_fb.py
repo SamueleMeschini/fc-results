@@ -90,5 +90,5 @@ for row in axs:
 
 plt.tight_layout()
 
-plt.savefig("tbr_startup_inv_vs_TBE.pdf")
+plt.savefig("tbr_startup_inv_vs_TBE.eps", format='eps')
 plt.show()

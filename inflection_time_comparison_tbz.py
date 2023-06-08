@@ -34,4 +34,4 @@ for t_bz in t_bz_values:
     ax.spines.right.set_visible(False)
     ax.spines.top.set_visible(False)
     plt.tight_layout()
-    fig.savefig(f'inventories_vs_t_tbz{t_bz}h.pdf', dpi=300)
+    fig.savefig(f'inventories_vs_t_tbz{t_bz}h.eps', format='eps', dpi=300)

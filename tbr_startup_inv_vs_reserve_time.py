@@ -47,5 +47,5 @@ for ax in axs:
 plt.tight_layout()
 
 # save and show
-plt.savefig("tbr_startup_inv_vs_reserve_time.pdf")
+plt.savefig("tbr_startup_inv_vs_reserve_time.eps", format='eps')
 plt.show()

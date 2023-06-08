@@ -44,5 +44,5 @@ axs[1].set_ylim(bottom=0)
 
 
 plt.tight_layout()
-plt.savefig("tbr_startup_inv_vs_tau_bz.pdf")
+plt.savefig("tbr_startup_inv_vs_tau_bz.eps", format='eps')
 plt.show()

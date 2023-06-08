@@ -75,7 +75,7 @@ ax.spines.right.set_visible(False)
 ax.spines.top.set_visible(False)
 print(t_infl, np.min(storage_inventory))
 plt.tight_layout()
-plt.savefig("inflection_point_wo_reserves.pdf", dpi=300)
+plt.savefig("inflection_point_wo_reserves.eps", format='eps', dpi=300)
 plt.show()
 
 # Plot with reserves 
@@ -99,5 +99,5 @@ myArrow = FancyArrowPatch(posA=(t_infl, 0), posB=(t_infl, 1), arrowstyle='<|-|>'
 ax.text(x=7, y = 0.5, s='Reserve inventory')
 ax.add_artist(myArrow)
 plt.tight_layout()
-plt.savefig("inflection_point_w_reserves.pdf", dpi=300)
+plt.savefig("inflection_point_w_reserves.eps", format='eps', dpi=300)
 plt.show()

@@ -33,5 +33,5 @@ def subcategorybar(X, vals, width=0.6):
 
 subcategorybar(names, [I_st_wo_res, I_st_w_res])
 plt.tight_layout()
-plt.savefig("startup_inv_vs_designs.pdf")
+plt.savefig("startup_inv_vs_designs.eps", format='eps')
 plt.show()

@@ -56,4 +56,4 @@ ax.annotate('$t_d = 2y$', xy=(t_d_1, 2*y1[0,2]),  xycoords='data',
 ax.spines.right.set_visible(False)
 ax.spines.top.set_visible(False)
 plt.tight_layout()
-fig.savefig("inventories_af_comparison.pdf", dpi=300)
+fig.savefig("inventories_af_comparison.eps", format='eps', dpi=300)

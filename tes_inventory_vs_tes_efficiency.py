@@ -36,5 +36,5 @@ plt.gca().spines.top.set_visible(False)
 plt.tight_layout()
 
 # save and show
-plt.savefig("tes_inv_vs_tes_efficiency.pdf")
+plt.savefig("tes_inv_vs_tes_efficiency.eps", format='eps')
 plt.show()

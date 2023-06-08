@@ -25,4 +25,4 @@ for t_bz in t_bz_values:
     ax.spines.right.set_visible(False)
     ax.spines.top.set_visible(False)
     plt.show()
-    fig.savefig(f'inventories_vs_t_tbz{t_bz}d.pdf', dpi=300)
+    fig.savefig(f'inventories_vs_t_tbz{t_bz}d.eps', format='eps', dpi=300)

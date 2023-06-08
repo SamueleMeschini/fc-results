@@ -49,7 +49,7 @@ axs[1].set_xlabel("Non-radioactive loss fraction $\epsilon$")
 
 
 plt.tight_layout()
-plt.savefig("tbr_vs_epsi.png", dpi=300)
+plt.savefig("tbr_vs_epsi.eps", format='eps', dpi=300)
 plt.show()
 
 # fig, (ax1,ax2) = plt.subplots(2,1,sharex=True)

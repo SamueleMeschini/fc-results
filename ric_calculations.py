@@ -88,7 +88,7 @@ plt.gca().spines.left.set_visible(False)
 plt.gca().tick_params(axis="both", which="both", length=0)
 plt.tight_layout()
 
-plt.savefig("ric_TBR.pdf")
+plt.savefig("ric_TBR.eps", format='eps')
 
 sensitivity_index_coeffs = []
 colours = []
@@ -145,5 +145,5 @@ plt.gca().spines.left.set_visible(False)
 plt.gca().tick_params(axis="both", which="both", length=0)
 plt.tight_layout()
 
-plt.savefig("ric_startup_inventory.pdf")
+plt.savefig("ric_startup_inventory.eps", format='eps')
 plt.show()

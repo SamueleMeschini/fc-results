@@ -91,7 +91,7 @@ plt.gca().tick_params(axis="both", which="both", length=0)
 plt.legend(designs)
 plt.title('TBR$_r$')
 plt.tight_layout()
-plt.savefig('TBR_RIC_vs_design.pdf')
+plt.savefig('TBR_RIC_vs_design.eps', format='eps')
 
 # Startup inventory
 
@@ -139,4 +139,4 @@ plt.gca().tick_params(axis="both", which="both", length=0)
 plt.legend(designs)
 plt.title('I$_{st}$')
 plt.tight_layout()
-plt.savefig('startup_RIC_vs_design.pdf')
+plt.savefig('startup_RIC_vs_design.eps', format='eps')
